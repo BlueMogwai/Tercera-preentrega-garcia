@@ -1,0 +1,46 @@
+{% extends 'grupos/base.html' %}
+
+{% block title %} Listado de Clases {% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Clases</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Clase</th>
+                    <th scope="col">Grupo</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora de Inicio</th>
+                    <th scope="col">Hora de Fin</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if todas_las_clases %}
+                {% for clase in todas_las_clases %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ clase.nombre }}</td>
+                    <td>{{ clase.grupo }}</td>
+                    <td>{{ clase.fecha }}</td>
+                    <td>{{ clase.hora_inicio }}</td>
+                    <td>{{ clase.hora_fin }}</td>
+                    <td>
+                        <a href="/grupos/detail-clase/{{ clase.id }}" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay Clases disponibles.</td>
+                </tr>
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

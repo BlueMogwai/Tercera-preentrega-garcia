@@ -1,0 +1,25 @@
+{% extends 'grupos/base.html' %}
+
+{% block title %}Detalle del Grupo{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Detalle del Grupo
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ Grupo.nombre }}</h5>
+                        <p class="card-text">Size del grupo: {{ grupo.size }}</p>
+                        <p class="card-text">Tipo de grupo: {{ grupo.tipo }}</p>
+                        <p class="card-text">Descripción: {{ grupo.descripcion | default:"No proporcionado" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
