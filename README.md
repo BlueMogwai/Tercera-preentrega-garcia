@@ -6,7 +6,7 @@
 
 ## Instrucciones
 
-1. Abrir el enlace http://localhost:8000/grupos/.
+1. Abrir el enlace http://localhost:8000/grupos/ o http://127.0.0.1:8000/grupos/.
 2. Elegir en la barra de navegación qué acción se quiere hacer:
 
 ### Todas las Clases:
