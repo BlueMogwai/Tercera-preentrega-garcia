@@ -7,7 +7,7 @@
     <title>{% block title %} xxxxx {% endblock title %}</title>
     <!-- Bootstrap CSS CDN (Bootstrap 4 used as an example) -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="{% static 'grupos/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'grupos/css/bootstraps.css' %}">
 </head>
 <body>
     <!-- Navbar -->
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'grupos-list' %}">Todos los grupos</a>
+                    <a class="nav-link" href="{% url 'grupos-list' %}">Todos las clases</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'unirse-clase-con-form' %}">Unirse a una Clase</a>

@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='reserva',
             name='clase',
-            field=models.ForeignKey(default='Roma', on_delete=django.db.models.deletion.CASCADE, related_name='reservas', to='grupos.clase'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='reservas', to='grupos.clase'),
         ),
         migrations.AlterField(
             model_name='reserva',

@@ -14,6 +14,7 @@ class ReservaCreateForm(forms.ModelForm):
             "seccion",
             "experiencia",
             "presentacion",
+            "clase",
         ]
         labels = {
             "nombre": "Nombre del músico",
@@ -31,21 +32,22 @@ class ClaseCreateForm(forms.ModelForm):
             "nombre", 
             "disponible",
             "numero_de_musicos",
-            "size_del_grupo",
+            "grupo",
             "descripcion",
             "fecha",
             "hora_inicio",
             "hora_fin",
         ]    
         labels = {
-            "nombre": "Elegir nombre del juego",
+            "nombre": "Nombre de la clase", 
             "disponible": "Disponible",
-            "capacidad": "Número de jugadores",
-            "descripcion": "Descripción de la partida",
-            "sistema_de_juego": "Sistema de juego",
+            "numero_de_musicos": "Número de músicos",
+            "grupo": "Grupo",
+            "descripcion": "Descripción",
+            "clase": "A qué clase quieres unirte",
             "fecha": "Fecha",
             "hora_inicio": "Hora de inicio",
-            "hora_fin": "Hora de final"
+            "hora_fin": "Hora de finalización",
         }
 
 class GrupoCreateForm(forms.ModelForm):
@@ -60,6 +62,6 @@ class GrupoCreateForm(forms.ModelForm):
         labels = {
             "nombre": "Nombre del grupo",
             "size": "Tipo de grupo por tamaño",
-            "tipo": "Grupo instrumental o con vox",
+            "tipo": "Grupo instrumental o con voz",
             "descripcion": "Descripción del grupo y su estilo"
         }

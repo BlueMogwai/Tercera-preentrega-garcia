@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <form method="POST" action="{% url 'crear-grupo-con-form' %}"> 
                             {% csrf_token %}  <!-- CSRF Token added here -->
-                            {{ create_Grupo_form.as_p }}
+                            {{ create_group_form.as_p }}
                             <button type="buscar" class="btn btn-primary">Crear Grupo</button>
                         </form>
                     </div>

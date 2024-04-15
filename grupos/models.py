@@ -52,7 +52,7 @@ class Clase(models.Model):
     nombre = models.CharField(max_length=250)
     disponible = models.BooleanField(default=True)
     numero_de_musicos = models.IntegerField()
-    size_del_grupo = models.ForeignKey(Size, on_delete=models.CASCADE, related_name='size_del_grupo')
+    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE, related_name='grupo')
     descripcion = models.TextField(blank=True, null=True)
     fecha = models.DateField(default=timezone.now)
     hora_inicio = models.TimeField(default=timezone.now)
@@ -63,7 +63,7 @@ class Clase(models.Model):
 
 class Reserva(models.Model):
     nombre = models.CharField(max_length=50)
-    clase = models.ForeignKey(Clase, on_delete=models.CASCADE, related_name='reservas')
+    clase = models.ForeignKey(Clase, on_delete=models.CASCADE, related_name="reservas")
     instrumento = models.CharField(max_length=50)
     seccion = models.CharField(max_length=50)
     experiencia = models.BooleanField(default=True)
@@ -73,4 +73,4 @@ class Reserva(models.Model):
         return "Si" if self.experiencia else "No"
 
     def __str__(self):
-        return f"¡{self.nombre} ha reservado la clase {self.seccion}!"
+        return f"¡{self.nombre} ha reservado la clase {self.clase}!"

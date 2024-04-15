@@ -36,8 +36,8 @@ def create_class_form_view(request):
             nombre = form.cleaned_data["nombre"]
             disponible = form.cleaned_data["disponible"]
             numero_de_musicos = form.cleaned_data["numero_de_musicos"]
-            size_del_grupo = form.cleaned_data["size_del_grupo"]
-            presentacion = form.cleaned_data["presentacion"]
+            grupo = form.cleaned_data["grupo"]
+            descripcion = form.cleaned_data["descripcion"]
             fecha = form.cleaned_data["fecha"]
             hora_inicio = form.cleaned_data["hora_inicio"]
             hora_fin = form.cleaned_data["hora_fin"]
@@ -45,8 +45,8 @@ def create_class_form_view(request):
                 nombre=nombre,
                 disponible=disponible,
                 numero_de_musicos=numero_de_musicos,
-                size_del_grupo=size_del_grupo,
-                presentacion=presentacion,
+                grupo=grupo,
+                descripcion=descripcion,
                 fecha=fecha,
                 hora_inicio=hora_inicio,
                 hora_fin=hora_fin,
@@ -62,14 +62,14 @@ def create_group_form_view(request):
         form = GrupoCreateForm(request.POST)
         if form.is_valid():
             nombre = form.cleaned_data["nombre"]
-            size = form.cleaned_data["size_del_grupo"]
+            size = form.cleaned_data["size"]
             tipo = form.cleaned_data["tipo"]
-            presentacion = form.cleaned_data["presentacion"]
+            descripcion = form.cleaned_data["descripcion"]
             nuevo_grupo = Grupo(
                 nombre=nombre,
                 size=size,
                 tipo=tipo,
-                presentacion=presentacion,
+                descripcion=descripcion,
                 )
             nuevo_grupo.save()
             return detail_group_view(request, nuevo_grupo.id)
@@ -79,7 +79,7 @@ def home_view(request):
 
 def list_view(request):
     clases = Clase.objects.all()
-    contexto = {"todos_las_clases": clases}
+    contexto = {"todas_las_clases": clases}
     return render(request, "grupos/list.html", contexto)
 
 def search_view(request, musico):
@@ -95,10 +95,12 @@ def search_with_form_view(request):
         form = ReservaSearchForm(request.POST)
         if form.is_valid():
             musico = form.cleaned_data["musico"]
-        reservas_del_musico = Reserva.objects.filter(musico=musico).all()
-        contexto = {"todas_las_clases": reservas_del_musico}
-        return render(request, "grupos/detail.html", contexto)
-
+            reservas_del_musico = Reserva.objects.filter(nombre=musico)
+            contexto = {"todas_las_clases": reservas_del_musico}
+            return render(request, "grupos/detail.html", contexto)
+        else:
+            return render(request, "grupos/form-search.html", {"search_form": form})
+    
 def detail_view(request, reservas_id):
     reserva = Reserva.objects.get(id=reservas_id)
     contexto = {"reserva": reserva}
